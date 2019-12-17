@@ -12,3 +12,10 @@ e.  Db folder is the database file store.
  1.Admin have all access means add new user and edit user and delete user.
  2.yogesh user is the normal use he only view the list .He can add update or delete any user data.
  3.I assume that user_type '1' is normal (lock) use and user_type '2' is Admin user (Unlock) all functionality 
+ 
+ 
+ Response is store in response_details .txt
+ 
+ Admin :Usename:admin Password:Pass@123
+ Normal: username:yogesh Password:916796421A
+ 
