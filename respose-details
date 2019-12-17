@@ -1,0 +1,173 @@
+ a .http://localhost/example/ws-get-login
+    webservice is use to check the login
+ 1.no input data
+  {"Response":{"error_code":"1","msg":"Please Enter Credential Details"}}
+
+  2.invalid userdetails
+   {"Response":{"error_code":"1","msg":"Invalid Username and Password"}}
+   
+  3.user_name:admin,password:Pass@123(Admin/Unlock feacture) II user_name:yogesh password:9167964521A (Normal User Lock feacture)
+  {"Response":{"error_code":"0","msg":"Successfully","user_details":[{"user_id":"1","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri","user_email":"pgujiri@gmail.com","user_type":"2","user_status":"1","user_create_date":"2019-12-17 23:31:03"}]}}
+   
+   here user_details array user_type is define the user type it meas it is normal user(locked user) or admin (unlock user);
+   
+   
+   
+   
+   
+   
+   
+ b.http://localhost/example/ws-get-user-details
+   webservice is use to get user List
+   1.no input data
+   
+   {"Response":{"error_code":"1","msg":"Please Enter The User Id","errors":"
+<p>The user_id field is required.<\/p>\n"}}
+  
+  2. input is user_id=1
+  {"Response":{"error_code":"0","msg":"Success Full","user_records":[{"user_id":"1","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri","user_email":"pgujiri@gmail.com","user_type":"2","user_status":"1","user_create_date":"2019-12-17 23:31:03"},{"user_id":"2","user_name":"yogesh","first_name":"yogesh","middle_name":"ramesh","last_name":"kale","user_email":"yogesh@gmail.com","user_type":"1","user_status":"1","user_create_date":"2019-12-18 02:06:32"}],"user_access":"2"}}
+  
+  
+  
+  
+  
+  
+ c.http://localhost/example/ws-set-user-details
+  Add New User Data
+  
+  1.no input data
+ {"Response":{"error_code":"1","msg":"Please Enter User Details","errors":"
+<p>The user_name field is required.<\/p>\n
+    <p>The first_name field is required.<\/p>\n
+        <p>The last_name field is required.<\/p>\n
+            <p>The email_id field is required.<\/p>\n
+                <p>The password field is required.<\/p>\n
+                    <p>The Status field is required.<\/p>\n
+                        <p>The User type field is required.<\/p>\n"}}
+						
+						
+    2.User Access Deine 
+	user_id=2 which is normal user so lock the feacture
+{"Response":{"error_code":"1","msg":"Access Deine"}}	
+    
+	3.successfull insert data
+	    input are
+		login user_id to track the details
+		user_id=1 which is admin user 
+		
+		
+		user_name:krishna
+		first_name:krishna 
+		last_name:rao
+		middel_name:gujiri
+		password:1234deaa
+		email_id:krishna@gmail.com
+		status:1
+		user_type:1	
+	{"Response":{"error_code":"0","msg":"Success Fully Added"}}
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 d.http://localhost/example/ws-get-user-details-by-Id
+	   get Single user Details
+	 
+	   1.no input data;
+	 
+{"Response":{"error_code":"1","msg":"Please Enter User Details","errors":"
+<p>The user_name_id field is required.<\/p>\n"}}
+    
+	2.User Access Deine 
+	user_id=2 which is normal user so lock the feacture
+	
+	{"Response":{"error_code":"1","msg":"Access Denie"}}
+	
+	3.. successfull get data
+	input are user_id=1 and user_name_id=2
+	{"Response":{"error_code":"0","msg":"Success Full","user_records":[{"user_id":"2","user_name":"yogesh","first_name":"yogesh","middle_name":"ramesh","last_name":"kale","user_email":"yogesh@gmail.com","user_type":"1","user_status":"1","user_create_date":"2019-12-18 02:06:32"}],"user_access":"2"}}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	e.http://localhost/example/ws-update-user-details
+  Edit New User Data
+  
+  1.no input data
+ {"Response":{"error_code":"1","msg":"Please Enter User Details","errors":"
+ <p>The user_name_id field is required.<\/p>\n
+<p>The user_name field is required.<\/p>\n
+    <p>The first_name field is required.<\/p>\n
+        <p>The last_name field is required.<\/p>\n
+            <p>The email_id field is required.<\/p>\n
+                <p>The password field is required.<\/p>\n
+                    <p>The Status field is required.<\/p>\n
+                        <p>The User type field is required.<\/p>\n"}}
+						
+						
+    2.User Access Deine 
+	user_id=2 which is normal user so lock the feacture
+{"Response":{"error_code":"1","msg":"Access Deine"}}	
+    
+	3.successfull Updae data
+	    input are
+		login user_id to track the details
+		user_id=1 which is admin user 
+		
+		user_name_id=3
+		user_name:krishna
+		first_name:krishna 
+		last_name:rao
+		middel_name:gujiri
+		password:1234deaa
+		email_id:krishna@gmail.com
+		status:1
+		user_type:1	
+	{"Response":{"error_code":"0","msg":"Success Fully Updated"}}
+	
+	
+	
+	
+	
+	
+	f.http://localhost/example/ws-delete-user-details
+	 Delete User Details
+	 
+	1.no input data
+	{"Response":{"error_code":"1","msg":"Please Enter User Details","errors":"
+	 <p>The user_id field is required.<\/p>\n
+	  <p>The user_name_id field is required.<\/p>\n"}}
+	  
+    2.User Access Deine 
+	user_id=2 which is normal user so lock the feacture
+    {"Response":{"error_code":"1","msg":"Access Deine"}}
+    
+    3.Succefully Delete Data	
+	user_id=1 which is admin user 
+		
+		user_name_id=3
+	{"Response":{"error_code":"0","msg":"Success Fully Deleted"}}
+	
+	
+	
+	g.http://localhost/example/ws-get-user-details
+   webservice is use to get Log Details
+   1.no input data
+ 
+   {"Response":{"error_code":"1","msg":"Please Enter The User Id","errors":"
+<p>The user_id field is required.<\/p>\n"}}
+  
+  2. input is user_id=1
+  
+{"Response":{"error_code":"0","msg":"User Log","user_activity":[{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 00:52:40","user_active_time":"2019-12-18 00:52:40","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 00:53:07","user_active_time":"2019-12-18 00:53:07","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 00:56:27","user_active_time":"2019-12-18 00:56:27","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:05:46","user_active_time":"2019-12-18 01:05:46","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:07:20","user_active_time":"2019-12-18 01:07:20","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:07:52","user_active_time":"2019-12-18 01:07:52","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:09:48","user_active_time":"2019-12-18 01:09:48","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:09:50","user_active_time":"2019-12-18 01:09:50","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:09:51","user_active_time":"2019-12-18 01:09:51","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:09:52","user_active_time":"2019-12-18 01:09:52","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:09:53","user_active_time":"2019-12-18 01:09:53","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:09:54","user_active_time":"2019-12-18 01:09:54","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:09:55","user_active_time":"2019-12-18 01:09:55","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:13:00","user_active_time":"2019-12-18 01:13:00","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:13:02","user_active_time":"2019-12-18 01:13:02","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:13:04","user_active_time":"2019-12-18 01:13:04","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:13:17","user_active_time":"2019-12-18 01:13:17","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:14:17","user_active_time":"2019-12-18 01:14:17","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:15:34","user_active_time":"2019-12-18 01:15:34","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:15:35","user_active_time":"2019-12-18 01:15:35","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:16:18","user_active_time":"2019-12-18 01:16:18","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:16:21","user_active_time":"2019-12-18 01:16:21","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:16:22","user_active_time":"2019-12-18 01:16:22","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:16:23","user_active_time":"2019-12-18 01:16:23","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:20:48","user_active_time":"2019-12-18 01:20:48","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Update the User admin","created_at":"2019-12-18 01:20:50","user_active_time":"2019-12-18 01:20:50","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:23:38","user_active_time":"2019-12-18 01:23:38","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Update the User admin","created_at":"2019-12-18 01:23:46","user_active_time":"2019-12-18 01:23:46","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:25:37","user_active_time":"2019-12-18 01:25:37","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Update the User admin","created_at":"2019-12-18 01:26:16","user_active_time":"2019-12-18 01:26:16","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:28:11","user_active_time":"2019-12-18 01:28:11","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Update the User admin","created_at":"2019-12-18 01:28:13","user_active_time":"2019-12-18 01:28:13","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:28:17","user_active_time":"2019-12-18 01:28:17","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details admin","created_at":"2019-12-18 01:28:28","user_active_time":"2019-12-18 01:28:28","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Update the User admin","created_at":"2019-12-18 01:29:18","user_active_time":"2019-12-18 01:29:18","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Add New  User yogesh","created_at":"2019-12-18 02:06:32","user_active_time":"2019-12-18 02:06:32","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Add New  User krishna","created_at":"2019-12-18 03:00:12","user_active_time":"2019-12-18 03:00:12","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"},{"user_activity_text":" Get User Details yogesh","created_at":"2019-12-18 03:06:58","user_active_time":"2019-12-18 03:06:58","user_name":"admin","first_name":"padma","middle_name":"bhagaban","last_name":"gujiri"}]}}
+
+	
